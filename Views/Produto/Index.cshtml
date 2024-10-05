@@ -1,0 +1,43 @@
+﻿@model List<GestaoProdutos.Models.Produto>
+
+@{
+    ViewData["Title"] = "Lista de produtos";
+}
+
+<div class="text-center">
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" role="button" asp-controller="Produto" asp-action="Criar">Adicionar produto</a>
+    </div>
+
+    <h1 class="display-3">Listagem de produtos</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Disponivel</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nome</td>
+                        <td>@item.Valor</td>
+                        <td>@item.Disponivel</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center">Nenhum produto encontrado. Adicione um produto</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
